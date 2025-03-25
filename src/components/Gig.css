@@ -1,0 +1,129 @@
+.gig-card {
+  background-color: #1a1a1a;
+  color: #ffffff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.gig-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+}
+
+/* Add a subtle gradient overlay */
+.gig-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(76, 0, 130, 0.2) 0%, rgba(60, 9, 108, 0.1) 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Band name styling */
+.bandname {
+  font-size: 2rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin-bottom: 1rem;
+  color: #ff3e3e;
+  text-shadow: 0 0 10px rgba(255, 62, 62, 0.3);
+  position: relative;
+  z-index: 2;
+}
+
+/* Image styling */
+.gigImage {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+  position: relative;
+  z-index: 2;
+}
+
+.gigImage:hover {
+  transform: scale(1.02);
+}
+
+/* Description styling */
+.gigDescription {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  color: #e0e0e0;
+  position: relative;
+  z-index: 2;
+}
+
+/* Date styling */
+.gigDate {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #00ffff;
+  margin-bottom: 0.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+/* Location styling */
+.gigLocation {
+  font-size: 1rem;
+  color: #aaaaaa;
+  font-weight: 500;
+  position: relative;
+  z-index: 2;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Add a subtle pulsing animation to the date */
+@keyframes pulse {
+  0% { opacity: 0.9; }
+  50% { opacity: 1; }
+  100% { opacity: 0.9; }
+}
+
+.gigDate {
+  animation: pulse 4s infinite ease-in-out;
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+  .gig-card {
+    padding: 1rem;
+    max-width: 100%;
+  }
+  
+  .bandname {
+    font-size: 1.8rem;
+  }
+  
+  .gigDescription {
+    font-size: 0.9rem;
+  }
+  
+  .gigDate {
+    font-size: 1.1rem;
+  }
+  
+  .gigLocation {
+    font-size: 0.9rem;
+  }
+}
