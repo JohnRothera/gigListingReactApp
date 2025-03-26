@@ -39,7 +39,7 @@
   text-transform: uppercase;
   letter-spacing: 0.15em;
   margin-bottom: 1rem;
-  color: #ff3e3e;
+  color: #b54646;
   text-shadow: 0 0 10px rgba(255, 62, 62, 0.3);
   position: relative;
   z-index: 2;
@@ -76,7 +76,7 @@
 .gigDate {
   font-size: 1.2rem;
   font-weight: 600;
-  color: #00ffff;
+  color: #bd52a4;
   margin-bottom: 0.5rem;
   position: relative;
   z-index: 2;
