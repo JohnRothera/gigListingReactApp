@@ -2,6 +2,7 @@ body, html {
   margin: 0;
   padding: 0;
   background-color: #1d1a1a; /* Dark background color */
+  background: radial-gradient(circle at center, #2c2b2b, #020202);
   color: #ffffff;
   font-family: 'Helvetica Neue', Arial, sans-serif;
   box-sizing: border-box;

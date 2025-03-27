@@ -129,6 +129,19 @@
   transform: scale(1.4);
 }
 
+.favorited-gig {
+  /* Highlight favorited gigs with a subtle border or glow */
+  border: 2px solid #b54646;
+  box-shadow: 0 0 10px rgba(255, 111, 0, 0.3);
+  transform: scale(1.02);
+  transition: all 0.3s ease;
+}
+
+/* Ensure the transition works when toggling favorites */
+.gig-card {
+  transition: all 0.3s ease;
+}
+
 /* Add a subtle pulsing animation to the date */
 @keyframes pulse {
   0% { opacity: 0.6; }
@@ -142,9 +155,18 @@
 
 /* Media query for smaller screens */
 @media (max-width: 768px) {
+  .gigs-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+
   .gig-card {
     padding: 1rem;
     max-width: 75%;
+    margin: 0 auto; /* Center the card horizontally */
+    width: 100%; /* Take up full width of the container */
   }
   
   .bandname {
@@ -161,5 +183,17 @@
   
   .gigLocation {
     font-size: 0.9rem;
+  }
+}
+
+/* Extra small screens */
+@media (max-width: 480px) {
+  .gig-card {
+    max-width: 90%; /* Slightly wider on very small screens */
+  }
+  
+  .app-title {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
   }
 }

@@ -1,43 +1,48 @@
+import { useState } from "react";
 import Gig from "./components/Gig";
-import convergeImage from "./assets/Converge_Observatory-20.png";
-import charliImage from "./assets/charliexcx.png";
-import turnstileImage from "./assets/Turnstile-7.png";
-import dinosaurJrImage from "./assets/Dinosaur_Jr.png";
+import gigsData from "./data/gigs-data";
 import "./App.css";
 
 function App() {
+  // Use the imported gigs data
+  const initialGigs = gigsData;
+
+  // State to track gigs
+  const [gigs, setGigs] = useState(initialGigs);
+
+  // Function to toggle a gig's favorite status
+  const toggleFavorite = (gigId) => {
+    setGigs((prevGigs) =>
+      prevGigs.map((gig) =>
+        gig.id === gigId ? { ...gig, favorite: !gig.favorite } : gig
+      )
+    );
+  };
+
+  // Sort gigs to have favorites at the top
+  const sortedGigs = [...gigs].sort((a, b) => {
+    if (a.favorite && !b.favorite) return -1;
+    if (!a.favorite && b.favorite) return 1;
+    return 0;
+  });
+
   return (
     <div className="gigs-container">
       <h1 className="app-title">Upcoming Gigs</h1>
       <div className="gigs-grid">
-        <Gig 
-          name="Converge"
-          image={convergeImage}
-          description="Converge are back! Playing Electric Brixton with support from IHateGod"
-          date="27th April 2025"
-          location="London - Brixton"
-        />
-        <Gig
-          name="Charli XCX"
-          image={charliImage}
-          description="Finishing up her world tour at Wembley Arena. Time for another Brat Summer!!"
-          date="23rd August 2025"
-          location="London - Wembley Arena"
-        />
-        <Gig
-          name="Turnstile"
-          image={turnstileImage}
-          description="Turnstile are heading back to the UK for Glastonbury Festival!"
-          date="27th June 2025"
-          location="Glastonbury Farm"
-        />
-        <Gig
-          name="Dinosaur Jr"
-          image={dinosaurJrImage}
-          description="J Mascis and the good buds are back out on a worldwide tour"
-          date="15th November 2025"
-          location="Nottingham - Rescue Rooms"
-        />
+        {sortedGigs.map((gig) => (
+          <Gig
+            key={gig.id}
+            id={gig.id}
+            name={gig.name}
+            image={gig.image}
+            description={gig.description}
+            date={gig.date}
+            location={gig.location}
+            isFavorite={gig.favorite}
+            onToggleFavorite={() => toggleFavorite(gig.id)}
+          />
+        ))}
       </div>
     </div>
   );

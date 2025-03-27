@@ -1,34 +1,26 @@
-import { useState } from "react";
 import "./Gig.css";
+import GigFavourite from "./GigFavourite";
+import GigDisplay from "./GigDisplay";
 
 const Gig = (props) => {
-  const [fave, setFave] = useState("😈");
+  // Use the favorite state from the parent App component
+  const fave = props.isFavorite ? "👍" : "😈";
 
-  const setFavourite = () => {
-    if (fave === "😈") {
-      setFave("👍");
-      alert("You're right, this show's gonna be killer!!");
-    } else if (fave === "👍") {
-      setFave("😈");
-      alert("Bummer man! This was gonna rock!");
-    }
+  const handleToggleFavorite = () => {
+    props.onToggleFavorite();
   };
 
   return (
-    <div className="gig-card">
-      {fave === "👍" && <h4 className="favourited">Favourited!</h4>}
-      <h3 className="bandname">{props.name}</h3>
-      <img
-        className="gigImage"
-        src={props.image}
-        alt={props.name + " live"}
-      ></img>
-      <p className="gigDescription">{props.description}</p>
-      <p className="gigDate">{props.date}</p>
-      <p className="gigLocation">{props.location}</p>
-      <button className="favouriteButton" onClick={setFavourite}>
-        {fave}
-      </button>
+    <div className={`gig-card ${props.isFavorite ? "favorited-gig" : ""}`}>
+      {props.isFavorite && <h4 className="favourited">Favourited!</h4>}
+      <GigDisplay
+        name={props.name}
+        image={props.image}
+        description={props.description}
+        date={props.date}
+        location={props.location}
+      />
+      <GigFavourite fave={fave} toggleFavorite={handleToggleFavorite} />
     </div>
   );
 };
