@@ -32,6 +32,18 @@
   z-index: 1;
 }
 
+.favourited {
+  font-size: 1rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin-bottom: 0.15rem;
+  color: #b54646;
+  text-shadow: 0 0 10px rgba(255, 62, 62, 0.3);
+  position: relative;
+  z-index: 2;
+}
+
 /* Band name styling */
 .bandname {
   font-size: 2rem;
@@ -93,22 +105,46 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+/* Favourite button styling */
+.favouriteButton {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 3;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.favouriteButton:hover {
+  background-color: rgba(181, 70, 70, 0.8);
+  transform: scale(1.4);
+}
+
 /* Add a subtle pulsing animation to the date */
 @keyframes pulse {
-  0% { opacity: 0.9; }
+  0% { opacity: 0.6; }
   50% { opacity: 1; }
-  100% { opacity: 0.9; }
+  100% { opacity: 0.6; }
 }
 
 .gigDate {
-  animation: pulse 4s infinite ease-in-out;
+  animation: pulse 3s infinite ease-in-out;
 }
 
 /* Media query for smaller screens */
 @media (max-width: 768px) {
   .gig-card {
     padding: 1rem;
-    max-width: 100%;
+    max-width: 75%;
   }
   
   .bandname {
